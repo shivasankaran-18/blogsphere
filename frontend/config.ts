@@ -1,0 +1,1 @@
+export const BACKEND_URL:string="https://medium-proj.shiva-18.workers.dev";
