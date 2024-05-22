@@ -27,7 +27,7 @@ model Post{
   id String @id @default(uuid())
   title String
   content String 
-    authorId String
+  authorId String
   publishedDate String 
   author User @relation(fields: [authorId],references: [id],onDelete: Cascade)
 }
