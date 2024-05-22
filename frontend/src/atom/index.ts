@@ -8,7 +8,7 @@ export const fullBlog=atomFamily({
     key:"fullBlog",
     default:selectorFamily(
         {
-            key:"fullblog",
+            key:"Fullblog",
             get:(id:string)=>async ()=>{
                 const result=await axios.get(`${BACKEND_URL}/api/v1/blog/${id}`,{
                     headers:{
@@ -39,3 +39,20 @@ export const blogs=atom({
     })
 })
 
+export const details=atom({
+    key:"details",
+    default:selector({
+        key:"Details",
+        get:async()=>{
+            const result=await axios.get(`${BACKEND_URL}/api/v1/blog/details`,{
+                headers:{
+                    Authorization:`Bearer ${localStorage.getItem("token")}`
+
+                }
+            });
+            console.log(result.data)
+            return result.data; 
+
+        }
+    })
+})

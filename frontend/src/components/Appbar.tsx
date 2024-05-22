@@ -1,11 +1,11 @@
 import { Avatar } from "./Card"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
-
-
+import {  useRecoilValueLoadable } from "recoil";
+import { details} from "../atom";
 export const Appbar = () => {
-
-
+    
+    const detail=useRecoilValueLoadable(details);
     const navigate=useNavigate();
    
     function fn()
@@ -29,7 +29,7 @@ export const Appbar = () => {
             <button type="button" onClick={fn}className="mr-4 text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 ">Log out</button>
         
 
-            <Avatar size={"big"} name="shiva" />
+            <Avatar size={"big"} name={detail.contents.name ? detail.contents.name[0] :"Shiva"} />
         </div>
     </div>
 }

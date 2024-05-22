@@ -53,7 +53,20 @@ router.get("/delete",async(c)=>{
 })
 
 
+router.get("/details",async(c)=>{
+    const prisma = new PrismaClient({
+        datasourceUrl: c.env.DATABASE_URL,
+    }).$extends(withAccelerate())
 
+    const result=await prisma.user.findUnique({
+        where:{
+            id:c.get("id") || ""
+        }
+    })
+
+    return c.json(result)
+
+})
 
 
 router.post("/new",async (c)=>{
